@@ -1,8 +1,5 @@
 <?php
 require_once __DIR__ . "/classes/Database.php";
-require_once __DIR__ . "/pages/courts.php";
-require_once __DIR__ . "/pages/login.php";
-require_once __DIR__ . "/pages/register.php";
 
 $db = new Database();
 ?>
