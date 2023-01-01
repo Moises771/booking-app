@@ -21,6 +21,14 @@ class Template
                 <a href="/booking-app/pages/courts.php">Courts</a>
                 <a href="/booking-app/pages/login.php">Login</a>
                 <a href="/booking-app/pages/register.php">Register</a>
+                <a href="/booking-app/pages/rules.php">Rules of Futsal</a>
             </nav>
     <?php }
+
+    public static function footer(){?>
+
+            <footer>Football near you!</footer>
+    <?php
+
+    }
 }

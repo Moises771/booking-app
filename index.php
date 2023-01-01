@@ -7,3 +7,8 @@ $db = new Database();Template:: header("football near you");
 
 
 
+<?php 
+
+Template::footer()
+
+?>
