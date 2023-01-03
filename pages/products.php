@@ -10,6 +10,5 @@ $products = $products_db->get_all();
 
 Template::header("Courts");
 
-var_dump($products);
-
 Template::footer();
+
