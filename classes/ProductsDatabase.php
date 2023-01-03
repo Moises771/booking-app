@@ -29,6 +29,9 @@ class ProductsDatabase extends Database{
         return $products;
     }
     //create
+
+    
     //update
     //delete
 }
+
