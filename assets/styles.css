@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(167, 209, 187);
+   
+}
+
+h1{
+    color: red;
+}
+
+
+.navMenu {
+    margin-left:30px;
+    margin-right:30px;
+    padding-left:30px;
+    padding-right:30px;
+    text-align: center;
+}
+
