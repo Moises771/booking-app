@@ -10,6 +10,7 @@ class Template
     {
         $is_logged_in = isset($_SESSION["user"]);
         $logged_in_user = $is_logged_in ? $_SESSION["user"] : null;
+        $is_admin = $is_logged_in && ($logged_in_user->role == "admin");
 
 ?>
         <!DOCTYPE html>
@@ -31,6 +32,9 @@ class Template
                 <?php if (!$is_logged_in) : ?>
                     <a href="/booking-app/pages/login.php">Login</a>
                     <a href="/booking-app/pages/register.php">Register</a>
+
+                <?php elseif ($is_admin) : ?>
+                    <a href="/booking-app/pages/admin.php">Admin Area</a>
                 <?php endif; ?>
 
                 <a href="/booking-app/pages/rules.php">Rules of Futsal</a>
@@ -40,6 +44,9 @@ class Template
                 <p>
                     <b>logged in as:</b>
                     <?= $logged_in_user->username ?>
+                <form action="/booking-app/scripts/post-logout.php" method="post">
+                    <input type="submit" value="Logout">
+                </form>
                 </p>
             <?php endif; ?>
 
