@@ -4,6 +4,7 @@ require_once __DIR__ . "/Database.php";
 require_once __DIR__ . "/User.php";
 
 class UsersDatabase extends Database{
+    
     public function get_one_by_username($username){
         $query = "SELECT * FROM users WHERE username = ?";
 
@@ -26,6 +27,26 @@ class UsersDatabase extends Database{
 
         return $user; 
 
+    }
+
+   
+    // get_all
+
+    public function get_all(){
+        $query = "SELECT * FROM users";
+
+        $result = mysqli_query($this->conn,  $query);
+
+        $db_users = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        $users = [];
+
+        foreach($db_users as $db_user){
+            $user = new User($db_user["username"], $db_user["role"], $db_user["id"]);
+            $users[] = $user;
+        }
+
+        return $users;
     }
 
     public function create(User $user){
