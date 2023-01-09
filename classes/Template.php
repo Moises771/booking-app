@@ -31,7 +31,7 @@ class Template
                 <a href="/booking-app/pages/courts.php">Courts</a>
 
                 <?php if (!$is_logged_in) : ?>
-                    <a href="/booking-app/pages/login.php">Login</a>
+                    <a href="/booking-app/pages/google-login/index.php">Login</a>
                     <a href="/booking-app/pages/register.php">Register</a>
 
                 <?php elseif ($is_admin) : ?>

@@ -1,11 +1,13 @@
-<?php 
+<?php
 
 require_once __DIR__ . "/Database.php";
 require_once __DIR__ . "/User.php";
 
-class UsersDatabase extends Database{
-    
-    public function get_one_by_username($username){
+class UsersDatabase extends Database
+{
+
+    public function get_one_by_username($username)
+    {
         $query = "SELECT * FROM users WHERE username = ?";
 
         $stmt = mysqli_prepare($this->conn, $query);
@@ -25,14 +27,14 @@ class UsersDatabase extends Database{
             $user->set_password_hash($db_user["password-hash"]);
         }
 
-        return $user; 
-
+        return $user;
     }
 
-   
+
     // get_all
 
-    public function get_all(){
+    public function get_all()
+    {
         $query = "SELECT * FROM users";
 
         $result = mysqli_query($this->conn,  $query);
@@ -41,7 +43,7 @@ class UsersDatabase extends Database{
 
         $users = [];
 
-        foreach($db_users as $db_user){
+        foreach ($db_users as $db_user) {
             $user = new User($db_user["username"], $db_user["role"], $db_user["id"]);
             $users[] = $user;
         }
@@ -49,7 +51,8 @@ class UsersDatabase extends Database{
         return $users;
     }
 
-    public function create(User $user){
+    public function create(User $user)
+    {
         $query = "INSERT INTO users (username, `password-hash`, `role`) VALUES (?,?,?)";
 
         $stmt = mysqli_prepare($this->conn, $query);
@@ -58,7 +61,39 @@ class UsersDatabase extends Database{
 
         $success = $stmt->execute();
 
-        return $success; 
+        return $success;
+    }
 
+    public function get_google_user_id(User $user)
+    {
+
+        //kolla om användare finns
+
+        $db_user = $this->get_one_by_username($user->username);
+
+        //om inte, skapa användare. 
+
+        if ($db_user == null) {
+
+            $query = "INSERT INTO users (username) VALUES (?)";
+
+            $stmt = mysqli_prepare($this->conn, $query);
+
+            $username = $user->username;
+
+            $stmt->bind_param("s", $username);
+
+            $success = $stmt->execute();
+
+            if ($success) {
+                $user->id = $stmt->insert_id;
+            } else {
+                die("Error saving google user");
+            }
+        } else {
+            $user = $db_user;
+        }
+
+        return $user->id;
     }
 }
