@@ -7,9 +7,12 @@ export default function Navbar() {
         Futsal
       </Link>
       <ul>
-        <CustomLink to="/booking-app/front-end/src/pages/Login.js">Login</CustomLink>
+        <CustomLink to="/booking-app/front-end/src/pages/Home.js">Home</CustomLink>    
         <CustomLink to="/booking-app/front-end/src/pages/Courts.js">Courts</CustomLink>
+        <CustomLink to="/booking-app/front-end/src/pages/AdminProduct.js">Admin Product</CustomLink>
         <CustomLink to="/booking-app/front-end/src/pages/Rules.js">Rules</CustomLink>
+        <CustomLink to="/booking-app/front-end/src/pages/Login.js">Login</CustomLink>
+        <CustomLink to="/booking-app/front-end/src/pages/Register.js">Register</CustomLink>
       </ul>
     </nav>
   );

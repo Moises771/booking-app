@@ -18,7 +18,7 @@ Class Database
             if (!$this->conn) {
                 die("error connecting to db");
             }
-            echo "db connected";
+           
         }
    
 }
