@@ -3,6 +3,12 @@
 require_once __DIR__ . "/../classes/User.php";
 require_once __DIR__ . "/../classes/UsersDatabase.php";
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Headers: access");
+header("Access-Control-Allow-Methods: GET,POST");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 $success = false; 
 
 if (
@@ -29,14 +35,13 @@ if (
        $success = $users_db->create($user);
     }
 
-
-
 } else {
+    
 die("Invalid input");
 }
 
 if ($success) {
-    header("Location: /booking-app/pages/login.php");
+    header("Location: http://localhost:3000/booking-app/front-end/src/pages/Home.js");
 }
 
 else{

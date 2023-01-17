@@ -11,7 +11,7 @@ class Courts extends React.Component {
 
     loadData() {
 
-        fetch("http://localhost:8080/booking-app/pages/testing.php")
+        fetch("http://localhost:8080/booking-app/pages/courtsReact.php")
         .then(response=>response.json())
         .then((dataResponse)=>{
             

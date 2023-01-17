@@ -2,7 +2,6 @@
 
 require_once __DIR__ . "/../classes/ProductsDatabase.php";
 
-require_once __DIR__ . "/force-admin.php";
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: access");
@@ -14,6 +13,8 @@ $success = false;
 
 
 if(isset($_POST["name"]) && isset($_POST["description"]) && isset($_POST["price"])){
+
+    json_encode(file_get_contents("php:/input"));
 
     $upload_directory = __DIR__ . "/../assets/uploads/"; 
 
@@ -47,7 +48,7 @@ else{
 
 
 if($success){
-    header("Location: /booking-app/pages/admin.php");
+    header("Location: http://localhost:3000/booking-app/front-end/src/pages/Home.js");
     die();
 }
 else{

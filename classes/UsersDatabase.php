@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/Database.php";
 require_once __DIR__ . "/User.php";
+header("Access-Control-Allow-Origin: *");
 
 class UsersDatabase extends Database
 {
