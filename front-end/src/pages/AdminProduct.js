@@ -10,6 +10,29 @@ class AdminProduct extends React.Component {
     };
   }
 
+  DeleteCourt = (id) => {
+      console.log(id);
+
+    fetch("http://localhost:8080/booking-app/pages/courtsReact.php/?delete=" +id, {
+
+    method: "POST",
+    mode: "no-cors",
+    
+})
+
+       .then((response) => response.json())
+      .then((dataResponse) => {
+
+
+          console.log(dataResponse);
+          this.loadData();
+          
+        
+      })
+      .catch(console.log);
+  }
+
+
   loadData() {
     fetch("http://localhost:8080/booking-app/pages/courtsReact.php")
       .then((response) => response.json())
@@ -44,17 +67,18 @@ class AdminProduct extends React.Component {
                   <th>Name</th>
                   <th>Price</th>
                   <th>Photo</th>
-                  <th>Options</th>
+                  {/* <th>Options</th> */}
                 </tr>
               </thead>
               <tbody>
                 {courts.map((court) => (
-                  <tr>
-                    {/* Add link to the court so that the entire thing redirects to delete/edit page or use single edit delete buttons */}
 
+                  <Link to={'http://localhost:3000/booking-app/front-end/src/pages/SingleCourt.js'}>
+                  <tr key={court.id}>
                     <td>{court.id}</td>
                     <td>{court.name}</td>
                     <td>{court.price}</td>
+                    
                     <td>
                       <img
                         src={`http://localhost:8080/${court.img_url}`}
@@ -62,22 +86,13 @@ class AdminProduct extends React.Component {
                         alt="court"
                       />
                     </td>
-                    <td>
-                      <div className="btn-group" role="group" aria-label="">
-                        <button type="button" className="btn btn-warning">
-                          Edit
-                        </button>
-                        <button type="button" className="btn btn-warning">
-                        <Link className="btn btn-danger" to={"/booking-app/front-end/src/pages/DeleteCourt.js"}>Delete</Link>                          
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
+                  
+                  </tr></Link>
                 ))}
               </tbody>
             </table>
           </div>
-          <div class="card-footer text-muted"></div>
+          <div className="card-footer text-muted"></div>
         </div>
       );
     }

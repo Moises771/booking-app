@@ -10,6 +10,8 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
 
+    json_encode(file_get_contents("php:/input"));
+
     $users_db = new UsersDatabase();
 
     $user = $users_db->get_one_by_username($_POST["username"]);
@@ -19,7 +21,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 
         $_SESSION["user"] = $user;
 
-        header("Location: /booking-app/frontend/pages/home");
+        header("Location: http://localhost:3000/booking-app/front-end/src/pages/Home.js");
     } 
     else {
         die("Invalid username or password");

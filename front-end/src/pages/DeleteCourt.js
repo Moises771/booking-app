@@ -4,64 +4,49 @@ class DeleteCourt extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: "",
-      description: "",
-      price: ""
-    }
+      dataLoaded: false,
+      courts: [],
+    };
   }
 
-  changeValue = (e) => {
-    const state=this.state;
-    state[e.target.name]=e.target.value;
-    this.setState({state});
+  loadData() {
+    fetch("http://localhost:8080/booking-app/pages/courtsReact.php")
+      .then((response) => response.json())
+      .then((dataResponse) => {
+        console.log(dataResponse);
+        this.setState({ dataLoaded: true, courts: dataResponse });
+      })
+      .catch(console.log);
   }
 
-  sendData = (e) => {
-    e.preventDefault();
-    console.log("formulario enviado");
-   
-
-
-
-    fetch("http://localhost:8080/booking-app/admin-scripts/react-post-create-product.php/", {
-
-        method: "POST",
-        
-    })
-        .then(response=>response.json())
-        .then((dataResponse)=>{
-            
-            console.log(dataResponse)
-        
-        })
-        .catch(console.log)
-
-
+  componentDidMount() {
+    this.loadData();
   }
 
-  render() { 
+  render() {
+    const { courts } = this.state;
+    return (
+      <div>
+        <h1>Hello</h1>
 
-
-    return (  
-      <div className="card">
-        <div className="card-header">
-          Courts
-        </div>
-        <div className="card-body">
-            <form action="http://localhost:8080/booking-app/admin-scripts/react-post-create-product.php" method="post" encType="multipart/form-data">
-                <input type="text" name="name" placeholder="Name"/> <br/>
-                <textarea name="description" placeholder="Description"></textarea> <br/>
-                <input type="number" name="price" placeholder="Price"/> <br/>
-                <input type="file" name="image" accept="image/*"/> <br/>
-                <input type="submit" value="Save"/>
-            </form>
-        </div>
-        <div className="card-footer text-muted">
-        </div>
+        {courts.map((court) => (
+          <form
+            action="http://localhost:8080/booking-app/admin-scripts\react-post-delete-product.php"
+            method="post"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Name"
+              value={court.name}
+            />
+            <input type="text" name="id" value={court.id}/>
+            <input type="submit" value="Delete product" />
+          </form>
+        ))}
       </div>
     );
   }
 }
- 
-export default DeleteCourt;
 
+export default DeleteCourt;

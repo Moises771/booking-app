@@ -8,6 +8,8 @@ import Register from "./pages/Register";
 import {Route, Routes} from 'react-router-dom'
 import AddCourt from "./pages/AddCourt";
 import DeleteCourt from "./pages/DeleteCourt";
+import Admin from "./pages/Admin";
+import SingleCourt from "./pages/SingleCourt";
 
 function App() {
   
@@ -24,6 +26,8 @@ function App() {
       <Route path="/booking-app/front-end/src/pages/Register.js" element={<Register/>} />
       <Route path="/booking-app/front-end/src/pages/AddCourt.js" element={<AddCourt/>} />
       <Route path="/booking-app/front-end/src/pages/DeleteCourt.js" element={<DeleteCourt/>} />
+      <Route path="/booking-app/front-end/src/pages/Admin.js" element={<Admin/>} />
+      <Route path="/booking-app/front-end/src/pages/SingleCourt/:id" element={<SingleCourt/>} />
     </Routes>
     </div>
     

@@ -88,3 +88,24 @@ class AddCourt extends React.Component {
  
 export default AddCourt;
 
+
+
+import React from "react";
+import { useParams } from "react-router-dom";
+
+export default function SingleCourt() {
+
+  
+  const { id } = useParams();  
+
+  return (
+    <div>
+      <h1>Single Court {id} </h1>
+      <form>
+        <input type="text" name="name" placeholder="Name" value={courts.name}/><br></br>
+       
+    </form>
+      
+    </div>
+  );
+}

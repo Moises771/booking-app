@@ -100,5 +100,15 @@ class ProductsDatabase extends Database{
         return $stmt->execute();
     }
 
+    public function deleteCourt($id){
+        $query = "DELETE FROM products WHERE id = ?";
+
+        $stmt = mysqli_prepare($this->conn, $query);
+
+        $stmt->bind_param("i", $id);
+
+        return $stmt->execute();
+    }
+
 }
 
