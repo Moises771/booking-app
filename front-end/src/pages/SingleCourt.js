@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 export default function SingleCourt() {
-  const [data, setData] = useState([]);
+  const [court, setCourt] = useState({});
+  const { id } = useParams();
 
   const canchas = () => {
     fetch("http://localhost:8080/booking-app/pages/courtsReact.php")
       .then((response) => response.json())
       .then((dataResponse) => {
         console.log(dataResponse);
-        setData(dataResponse);
+        setCourt(dataResponse.find((item) => item.id === id));
       });
   };
 
@@ -17,32 +18,14 @@ export default function SingleCourt() {
     canchas();
   }, []);
 
-  //single court with param
-
-  const { id } = useParams();
-  // const product = data.find((item) => item.id === id);
-  //
-  // const product = data.find((item) => (item.id === id));
-  //
-  //  const {description} = product
-
-  // const product = data.find((item) => item.id === id);
-  // product.array();
-  // console.log(product);
-
   return (
+
+    
     <div>
-      <button onClick={canchas}>get</button>
       <div>
-        <ul>
-          {data.map((item) => (
-            <li key={item.id}>
-              {" "}
-              <p>User: {item.name}</p>
-              <p>Role: {item.price}</p>
-            </li>
-          ))}
-        </ul>
+        <h3>{court.name}</h3> 
+        <h3>{court.price}</h3> 
+        <img className='courtimg' src={`http://localhost:8080/${court.img_url}`} width="200px" height="200px" alt="court"/>       
        <div>
        </div>
       </div>

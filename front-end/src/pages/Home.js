@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class Home extends Component {
   render() {
     return (
-      <div>
+      <div className="homepage">
         <div>
           <img src={futsalheader} className="futsalheader" alt="futsal logo" />
         </div>

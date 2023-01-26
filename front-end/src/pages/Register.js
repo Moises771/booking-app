@@ -5,7 +5,7 @@ import React from 'react'
   return(
       <>
       <h1>Register</h1>
-      <div>
+      <div className='login'>
       <form action="http://localhost:8080/booking-app/scripts/post-register-user.php" method="post">
         <input type="text" name="username" placeholder="username"/> <br/>
         <input type="password" name="password" placeholder="password"/> <br/>

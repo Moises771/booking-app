@@ -11,6 +11,7 @@ import DeleteCourt from "./pages/DeleteCourt";
 import Admin from "./pages/Admin";
 import SingleCourt from "./pages/SingleCourt";
 import Template from './pages/TemplateReact';
+import Footer from "./pages/Footer";
 
 
 
@@ -18,7 +19,7 @@ function App() {
   
   return (
     <>
-    <Navbar />  
+    <Navbar/>  
     <div className="container">
     <Routes>
       <Route path="/booking-app/front-end/src/pages/Home.js" element={<Home />} />
@@ -33,6 +34,7 @@ function App() {
       <Route path="/singlecourts/:id" element={<SingleCourt/>} />
       <Route path="/booking-app/front-end/src/pages/TemplateReact.js" element={<Template/>} />
     </Routes>
+    <Footer/>
     </div>
     
     </>
