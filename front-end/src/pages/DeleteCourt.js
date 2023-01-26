@@ -26,11 +26,12 @@ class DeleteCourt extends React.Component {
   render() {
     const { courts } = this.state;
     return (
-      <div>
-        <h1>Hello</h1>
+      <div className="edit">
+        <h1>Delete/Edit</h1>
 
         {courts.map((court) => (
           <form
+            className="editform"
             action="http://localhost:8080/booking-app/admin-scripts\react-post-delete-product.php"
             method="post"
           >
@@ -41,7 +42,7 @@ class DeleteCourt extends React.Component {
               value={court.name}
             />
             <input type="text" name="id" value={court.id}/>
-            <input type="submit" value="Delete product" />
+            <input className="delete" type="submit" value="Delete court" />
           </form>
         ))}
       </div>

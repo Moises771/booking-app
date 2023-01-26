@@ -10,6 +10,9 @@ import AddCourt from "./pages/AddCourt";
 import DeleteCourt from "./pages/DeleteCourt";
 import Admin from "./pages/Admin";
 import SingleCourt from "./pages/SingleCourt";
+import Template from './pages/TemplateReact';
+
+
 
 function App() {
   
@@ -27,7 +30,8 @@ function App() {
       <Route path="/booking-app/front-end/src/pages/AddCourt.js" element={<AddCourt/>} />
       <Route path="/booking-app/front-end/src/pages/DeleteCourt.js" element={<DeleteCourt/>} />
       <Route path="/booking-app/front-end/src/pages/Admin.js" element={<Admin/>} />
-      <Route path="/booking-app/front-end/src/pages/SingleCourt/:id" element={<SingleCourt/>} />
+      <Route path="/singlecourts/:id" element={<SingleCourt/>} />
+      <Route path="/booking-app/front-end/src/pages/TemplateReact.js" element={<Template/>} />
     </Routes>
     </div>
     

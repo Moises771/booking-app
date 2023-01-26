@@ -8,30 +8,22 @@ class Admin extends React.Component {
       dataLoaded: false,
       canchas: [],
     };
+
+    this.state = {
+      userInfo: false,
+      users: [],
+    };
   }
 
-  DeleteCourt = (id) => {
-      console.log(id);
-
-    fetch("http://localhost:8080/booking-app/pages/courtsReact.php/?delete=" +id, {
-
-    method: "POST",
-    mode: "no-cors",
-    
-})
-
-       .then((response) => response.json())
-      .then((dataResponse) => {
-
-
-          console.log(dataResponse);
-          this.loadData();
-          
-        
+  userData() {
+    fetch("http://localhost:8080/booking-app/pages/usersReact.php")
+      .then((response) => response.json())
+      .then((userResponse) => {
+        console.log(userResponse);
+        this.setState({ userInfo: true, users: userResponse });
       })
       .catch(console.log);
   }
-
 
   loadData() {
     fetch("http://localhost:8080/booking-app/pages/courtsReact.php")
@@ -45,10 +37,13 @@ class Admin extends React.Component {
 
   componentDidMount() {
     this.loadData();
+    this.userData();
   }
+
 
   render() {
     const { dataLoaded, canchas } = this.state;
+    const {  users } = this.state;
 
     if (!dataLoaded) {
       return <div>loading</div>;
@@ -59,17 +54,11 @@ class Admin extends React.Component {
             <Link className="btn btn-success" to={"/booking-app/front-end/src/pages/AddCourt.js"}>Create Court</Link>
           </div>
           <div classname="card-body">
-            <h1>Courts</h1>
             <table className="table">
-              <thead>
-                <tr>
-                  <th>Name</th>                  
-                  <th>Photo</th>
-                </tr>
-              </thead>
+              
               <tbody>
 
-
+                <hr></hr><h1>Courts available for rent</h1><hr></hr>
                 {canchas.map((cancha) => (
                     <Link to="/booking-app/front-end/src/pages/DeleteCourt.js" key={cancha.id}> 
                     {cancha.name}
@@ -78,10 +67,17 @@ class Admin extends React.Component {
                         src={`http://localhost:8080/${cancha.img_url}`}
                         width="100px"
                         alt="court"
-                      />
-                    
-                    
+                      />                                     
                   </Link>
+                  
+                ))}<hr></hr>
+                  <h1>Current Users</h1><hr></hr>
+                  {users.map((user) => (
+                    <div className="users">
+                      <tr><p>User: {user.username}</p><p>Role: {user.role}</p></tr>                     
+                      
+                    </div>
+                  
                 ))}
               </tbody>
             </table>
@@ -90,7 +86,10 @@ class Admin extends React.Component {
         </div>
       );
     }
+
+      
+    }
   }
-}
+
 
 export default Admin;

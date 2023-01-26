@@ -1,10 +1,12 @@
 import {Link, useMatch, useResolvedPath} from 'react-router-dom'
+import logo from './assets/futsallogo.jpg';
 
 export default function Navbar() {
   return (
     <nav className="nav">
       <Link to="/" className="site-title">
-        Futsal
+        
+        <img src={logo} className="logo" alt='futsal logo' />
       </Link>
       <ul>
         <CustomLink to="/booking-app/front-end/src/pages/Home.js">Home</CustomLink>    

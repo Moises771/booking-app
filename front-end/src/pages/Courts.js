@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Courts extends React.Component {
     constructor(props) {
@@ -35,19 +36,19 @@ class Courts extends React.Component {
         return ( <table className='table'>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Photo</th>
-
+                    <th><h2>PHOTO</h2></th>
+                    <th><h2>VENUE</h2></th>
+                    <th><h2>PRICE</h2></th>                   
                 </tr>
             </thead>
             <tbody>
                 {courts.map(
                     (court)=>(
-                         <tr>
-                    <td>{court.name}</td>
-                    <td>{court.price}</td>
-                    <td><img src={`http://localhost:8080/${court.img_url}`} width="100px" alt="court"/></td>
+                 <tr key={court.id}>                    
+                    <td><img className='courtimg' src={`http://localhost:8080/${court.img_url}`} width="200px" height="200px" alt="court"/></td>
+                    <td><h3><b>{court.name}</b><br></br></h3>{court.description}</td>
+                    <td><b>SEK</b> {court.price}  PER HOUR</td>
+                   <Link to={`/singlecourts/${court.id}`}><td>More info</td></Link>
                 </tr>
                     )
 
