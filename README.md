@@ -22,6 +22,8 @@ The project runs from localhost:3000 but sends its databases request to the back
 
 The React portion of the project is found under booking-app/front-end/
 
+booking-app/front-end/src/pages is where my REACT pages are found
+
 The PHP portion of the project is found under booking-app. 
 
 Databases for both users and products must be created. The database is found under booking-app\Database.
