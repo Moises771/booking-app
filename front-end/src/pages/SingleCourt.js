@@ -22,15 +22,17 @@ export default function SingleCourt() {
 
     
     <div>
-      <div>
+      <div className="singlecourt">
+        <button className="booknow">BOOK NOW</button>
         <h3>{court.name}</h3> 
-        <h3>{court.price}</h3> 
-        <img className='courtimg' src={`http://localhost:8080/${court.img_url}`} width="200px" height="200px" alt="court"/>       
+        <h3><b>SEK</b> {court.price} per hour</h3> 
+        <img className='courtimg' src={`http://localhost:8080/${court.img_url}`} width="200px" height="200px" alt="court"/>
+        <h5>{court.description}</h5>       
        <div>
        </div>
       </div>
       <Link to="/booking-app/front-end/src/pages/Courts.js">
-        back to products
+        back to venues
       </Link>
     </div>
   );

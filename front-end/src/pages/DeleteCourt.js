@@ -26,7 +26,7 @@ class DeleteCourt extends React.Component {
   render() {
     const { courts } = this.state;
     return (
-      <div className="edit">
+      <div className="login">
         <h1>Delete/Edit</h1>
 
         {courts.map((court) => (

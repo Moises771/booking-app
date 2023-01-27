@@ -137,9 +137,15 @@ body{
 
  .rules{
     display: flex;
-    display: inline;
-    align-content: left;
-    font-size: x-large;
+    justify-content: flex-start;
+    flex-direction:column;
+    font-size: medium;
+    padding-bottom: 5rem;
+ }
+
+ .rules h2{
+    padding-top: 2rem;
+    text-decoration: underline;
  }
 
 
@@ -157,6 +163,26 @@ body{
 
 .login{
     padding-bottom: 20rem;
+}
+
+.booknow{
+  color: #ffffff;
+  background-color: #2ecc71;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 22px;
+  
+}
+
+.singlecourt{
+  display: flex;
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #F3F3F4;
 }
 
 

@@ -4,7 +4,7 @@ import logo from './assets/futsallogo.jpg';
 export default function Navbar() {
   return (
     <nav className="nav">
-      <Link to="/" className="site-title">
+      <Link to="/booking-app/front-end/src/pages/Home.js" className="site-title">
         
         <img src={logo} className="logo" alt='futsal logo' />
       </Link>
